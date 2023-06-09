@@ -1,4 +1,65 @@
+@font-face {
+  font-family: "A-Goblin-Appears";
+  src: url("/fonts/A-Goblin-Appears.ttf.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+
+html {
+  font-size: 16px;
+  font-family: "A-Goblin-Appears";
+}
+
 body {
   background-color: black;
   color: white;
+  overflow: hidden;
+  margin: 0;
 }
+
+/* START SCRREN */
+
+#start-screen {
+  height: 100vh;
+  width: 100vw;
+  overflow: hidden;
+  background-color: black;
+  color: white;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+#game-title {
+  width: 80%;
+  height: 30%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 7em;
+}
+
+#start-screen-buttons {
+  display: flex;
+  justify-content: space-evenly;
+  width: 80%;
+  height: 15%;
+}
+
+.start-button {
+  border: 2px solid yellow;
+  width: 40%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: 3em;
+}
+
+/* CUSTOM MENU SCREEN */
+
+/* BOARD */
+
+/* PIECES */
