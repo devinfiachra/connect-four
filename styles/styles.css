@@ -26,6 +26,7 @@ body {
   height: 100vh;
   width: 100vw;
   overflow: hidden;
+  position: absolute;
   background-color: black;
   color: white;
   display: flex;
@@ -64,12 +65,42 @@ body {
 
 /* CUSTOM MENU SCREEN */
 
-#custom-game-menu {
-  background-color: red;
+#custom-game-menu-screen {
+  background-color: green;
+  height: 100vh;
+  width: 100vw;
+  overflow: hidden;
+  margin: 0;
+  padding: 0;
+  position: absolute;
+  visibility: hidden;
+  z-index: 800;
 }
 
 /* GAME SCREEN */
+#game-screen {
+  background-color: aqua;
+  height: 100vh;
+  width: 100vw;
+  overflow: hidden;
+  margin: 0;
+  padding: 0;
+  position: absolute;
+  visibility: hidden;
+  z-index: 800;
+}
 
 /* END GAME SCREEN */
+#end-game-screen {
+  background-color: green;
+  height: 100vh;
+  width: 100vw;
+  overflow: hidden;
+  margin: 0;
+  padding: 0;
+  position: absolute;
+  visibility: hidden;
+  z-index: 200;
+}
 
 /* PIECES */

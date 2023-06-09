@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="/styles/styles.css" />
     <title>CONNECT FOUR</title>
   </head>
   <body>
@@ -13,16 +13,20 @@
       <div id="game-title">CONNECT FOUR</div>
 
       <div id="start-screen-buttons">
-        <div class="start-button">START</div>
-        <div class="start-button">CUSTOM GAME</div>
+        <div class="start-button" id="start-game">START</div>
+        <div class="start-button" id="open-options">CUSTOM GAME</div>
       </div>
     </div>
 
-    <div id="custom-game-menu"></div>
+    <div id="custom-game-menu-screen">
+      CUSTOM GAME MENU
 
-    <div id="game-screen"></div>
+      <div id="custom-menu"></div>
+    </div>
 
-    <div id="end-game-screen"></div>
+    <div id="game-screen">GAME</div>
+
+    <div id="end-game-screen">END GAME SCREEN</div>
 
     <script src="js/script.js"></script>
   </body>
