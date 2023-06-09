@@ -23,3 +23,18 @@ optionsMenu.addEventListener("click", (e) => {
 });
 
 // CUSTOM GAME MENU
+
+const customStart = document.getElementById("custom-menu-start");
+const backButton = document.getElementById("custom-back-button");
+
+customStart.addEventListener("click", (e) => {
+  alert("CUSTOM GAME MENU");
+  customGameScreen.style.visibility = "hidden";
+  gameScreen.style.visibility = "visible";
+});
+
+backButton.addEventListener("click", (e) => {
+  alert("CUSTOM GAME MENU");
+  startScreen.style.visibility = "visible";
+  customGameScreen.style.visibility = "hidden";
+});
