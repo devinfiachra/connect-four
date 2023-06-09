@@ -1,13 +1,15 @@
 @font-face {
-  font-family: "A-Goblin-Appears";
+  font-family: "retro";
   src: url("/fonts/A-Goblin-Appears.ttf.woff") format("woff");
   font-weight: normal;
   font-style: normal;
 }
 
+/* 1rem = 16px */
+
 html {
-  font-size: 16px;
-  font-family: "A-Goblin-Appears";
+  font-size: 3.2vw;
+  font-family: "retro";
 }
 
 body {
@@ -15,6 +17,7 @@ body {
   color: white;
   overflow: hidden;
   margin: 0;
+  padding: 0;
 }
 
 /* START SCRREN */
@@ -25,11 +28,12 @@ body {
   overflow: hidden;
   background-color: black;
   color: white;
-
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
+
+  z-index: 1000;
 }
 
 #game-title {
@@ -38,7 +42,7 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 7em;
+  font-size: 6vw;
 }
 
 #start-screen-buttons {
@@ -55,11 +59,17 @@ body {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  font-size: 3em;
+  font-size: 2.5vw;
 }
 
 /* CUSTOM MENU SCREEN */
 
-/* BOARD */
+#custom-game-menu {
+  background-color: red;
+}
+
+/* GAME SCREEN */
+
+/* END GAME SCREEN */
 
 /* PIECES */
