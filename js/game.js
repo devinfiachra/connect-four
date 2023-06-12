@@ -4,7 +4,7 @@ class Game {
     this.columns = 7;
     (this.boardMatrix = this.createBoard()),
       (this.winCondition = 4),
-      (this.currentPlayer = 1),
+      (this.currentPlayer = "player1"),
       (this.score = [0, 0]);
     this.theme = "";
     this.powerUpMode = false;
@@ -35,6 +35,8 @@ class Game {
         const columnELement = document.createElement("div");
         columnELement.classList.add("slot");
         columnELement.setAttribute("id", `${counter}`);
+        columnELement.setAttribute("row", `${i}`);
+        columnELement.setAttribute("index", `${j}`);
         rowElemet.appendChild(columnELement);
         counter++;
       }

@@ -14,12 +14,18 @@ function startClassicGame() {
   console.log(game);
 
   let slots = Array.from(document.getElementsByClassName("slot"));
-  console.log("SLOTS", slots);
+
+  slots.map((slot) => {
+    slot.addEventListener("click", (e) => {
+      console.log("SLOT: ", e.target);
+      e.target.style.backgroundColor = "red";
+    });
+  });
 }
 
 function startCustomGame(rows, columns, toWin, theme, music, powerUp) {
   let customGame = new CustomGame();
-  console.log("CUSTOM GAME", customGame);
+
   customGame.log();
 }
 
@@ -30,7 +36,6 @@ const optionsMenu = document.getElementById("open-options");
 
 // START MENU - START CLASSIC GAME
 startButton.addEventListener("click", (e) => {
-  alert("START CLASSIC GAME");
   startScreen.style.visibility = "hidden";
   gameScreen.style.visibility = "visible";
   startClassicGame();
