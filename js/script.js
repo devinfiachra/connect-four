@@ -17,16 +17,30 @@ function startClassicGame() {
 
   slots.map((slot) => {
     slot.addEventListener("click", (e) => {
+      // where the event is triggered
       console.log("SLOT: ", e.target);
+
+      // where the game piece should go
+      let CurrentRow = e.target.getAttribute("row");
+      let CurrentColumn = e.target.getAttribute("column");
+      console.log("Row: ", e.target.getAttribute("row"));
+      console.log("Column: ", e.target.getAttribute("column"));
+      game.boardMatrix[CurrentRow][CurrentColumn] = 1;
+
+      //loop from the bottom to the top of the rows (Board Height)
+      for (let i = game.rows - 1; i >= 0; i--) {
+        console.log(i);
+      }
+
       e.target.style.backgroundColor = "red";
+      console.log(game.boardMatrix);
     });
   });
 }
 
 function startCustomGame(rows, columns, toWin, theme, music, powerUp) {
   let customGame = new CustomGame();
-
-  customGame.log();
+  console.log(customGame);
 }
 
 // START MENU

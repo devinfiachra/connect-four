@@ -36,7 +36,7 @@ class Game {
         columnELement.classList.add("slot");
         columnELement.setAttribute("id", `${counter}`);
         columnELement.setAttribute("row", `${i}`);
-        columnELement.setAttribute("index", `${j}`);
+        columnELement.setAttribute("column", `${j}`);
         rowElemet.appendChild(columnELement);
         counter++;
       }
