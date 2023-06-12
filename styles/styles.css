@@ -1,9 +1,9 @@
 @font-face {
   font-family: "retro";
-  src: url("./fonts/A-Goblin-Appears.ttf.woff") format("woff"),
-    url("./fonts/A-Goblin-Appears.ttf.svg#A-Goblin-Appears") format("svg"),
-    url("./fonts/A-Goblin-Appears.ttf.eot"),
-    url("./fonts/A-Goblin-Appears.ttf.eot?#iefix") format("embedded-opentype");
+  src: url("fonts/A-Goblin-Appears.ttf.woff") format("woff"),
+    url("fonts/A-Goblin-Appears.ttf.svg#A-Goblin-Appears") format("svg"),
+    url("fonts/A-Goblin-Appears.ttf.eot"),
+    url("fonts/A-Goblin-Appears.ttf.eot?#iefix") format("embedded-opentype");
   font-weight: normal;
   font-style: normal;
 }
