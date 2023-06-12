@@ -56,7 +56,7 @@ body {
 }
 
 .start-button {
-  border: 2px solid yellow;
+  border: 2px solid springgreen;
   width: 40%;
   display: flex;
   flex-direction: column;
@@ -68,7 +68,7 @@ body {
 /* CUSTOM MENU SCREEN */
 
 #custom-game-menu-screen {
-  background-color: green;
+  background-color: springgreen;
   height: 100vh;
   width: 100vw;
   display: flex;
@@ -119,7 +119,7 @@ body {
 
 /* GAME SCREEN */
 #game-screen {
-  background-color: aqua;
+  background-color: black;
   height: 100vh;
   width: 100vw;
   overflow: hidden;
@@ -135,9 +135,9 @@ body {
 
 #board {
   margin: 0;
-  border: 2px solid red;
-  width: 80%;
-  height: 80%;
+  border: 4px solid springgreen;
+  width: 50%;
+  height: 75%;
   display: flex;
   flex-direction: column;
 }
@@ -145,23 +145,21 @@ body {
 .row {
   background-color: black;
   margin: 0;
-  border: 1px solid yellow;
   height: 100%;
   width: 100%;
   display: flex;
 }
 
 .slot {
-  background-color: white;
-  margin: 0;
-  border: 5px solid green;
+  border: 5px solid springgreen;
+  margin: 1%;
   border-radius: 50%;
   width: 100%;
 }
 
 /* END GAME SCREEN */
 #end-game-screen {
-  background-color: green;
+  background-color: springgreen;
   height: 100vh;
   width: 100vw;
   overflow: hidden;
@@ -173,3 +171,11 @@ body {
 }
 
 /* PIECES */
+
+.player1 {
+  background-color: magenta;
+}
+
+.player2 {
+  background-color: springgreen;
+}

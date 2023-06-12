@@ -10,20 +10,17 @@ const endGameScreen = document.getElementById("end-game-screen");
 const boardUI = document.getElementById("board");
 
 function startClassicGame() {
-  let board = new Board();
-  let game = new Game(board.createBoard());
-  game.setupClassic();
-  // console.log(game);
+  let game = new Game(6, 7);
+  console.log(game);
 
-  let slots = Array.from(document.getElementsByClassName("column"));
-  // console.log("SLOTS", slots);
+  let slots = Array.from(document.getElementsByClassName("slot"));
+  console.log("SLOTS", slots);
 }
 
 function startCustomGame(rows, columns, toWin, theme, music, powerUp) {
-  let board = new Board(rows, columns);
-  let game = new Game(board.createBoard(), toWin, theme, music, powerUp);
-  game.setupCustom();
-  // console.log(game);
+  let customGame = new CustomGame();
+  console.log("CUSTOM GAME", customGame);
+  customGame.log();
 }
 
 // START MENU
