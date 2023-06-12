@@ -5,11 +5,25 @@ const customGameScreen = document.getElementById("custom-game-menu-screen");
 const gameScreen = document.getElementById("game-screen");
 const endGameScreen = document.getElementById("end-game-screen");
 
-// SETUP
+// SETUP -> GAME START
+
+const boardUI = document.getElementById("board");
 
 function startClassicGame() {
-  let game = new Game();
-  game.startClassic();
+  let board = new Board();
+  let game = new Game(board.createBoard());
+  game.setupClassic();
+  // console.log(game);
+
+  let slots = Array.from(document.getElementsByClassName("column"));
+  // console.log("SLOTS", slots);
+}
+
+function startCustomGame(rows, columns, toWin, theme, music, powerUp) {
+  let board = new Board(rows, columns);
+  let game = new Game(board.createBoard(), toWin, theme, music, powerUp);
+  game.setupCustom();
+  // console.log(game);
 }
 
 // START MENU
@@ -39,6 +53,10 @@ const backButton = document.getElementById("custom-back-button");
 customStart.addEventListener("click", (e) => {
   alert("CUSTOM GAME MENU");
   customGameScreen.style.visibility = "hidden";
+
+  // ADD RULES TO TAKE CUSTOM PARAMETERS FROM CUSTOM FORM AND CREATE CUSTOM GAME FROM THE USER INPUT
+  startCustomGame();
+
   gameScreen.style.visibility = "visible";
 });
 
