@@ -1,4 +1,5 @@
 // Screens
+const coinDrop = "../styles/audio/game/coinDrop.wav";
 
 const startScreen = document.getElementById("start-screen");
 const customGameScreen = document.getElementById("custom-game-menu-screen");
@@ -7,15 +8,36 @@ const endGameScreen = document.getElementById("end-game-screen");
 
 //MUSIC
 
+async function fetchSoundFiles() {
+  var response = await fetch("../styles/audio/soundtrack/misc");
+  var data = await response.text();
+  var parser = new DOMParser();
+  var html = parser.parseFromString(data, "text/html");
+  var links = html.querySelectorAll("a");
+
+  var soundFiles = Array.from(links)
+    .map((link) => link.href)
+    .filter((href) => href.endsWith(".mp3")); // Adjust the file extension if needed
+
+  return soundFiles;
+}
+
 function coinIn() {
-  let sound = new Audio("../styles/audio/game/coinDrop.wav");
+  const sound = new Audio(coinDrop);
   console.log("SOUND");
   sound.play();
 }
 
 function soundtrack() {
-  let music = new Audio("../styles/audio/soundtrack/arctic-monkeys/tbhanc.mp3");
-  music.play();
+  fetchSoundFiles().then((soundFiles) => {
+    // Randomly select a sound file
+    var randomIndex = Math.floor(Math.random() * soundFiles.length);
+    var soundPath = soundFiles[randomIndex];
+
+    // Play the sound
+    var audio = new Audio(soundPath);
+    audio.play();
+  });
 }
 
 // TO DO: add a class to elements which take a color, and create a querySelectorAll function to map over them and apply a class primary, secondary so that a user can change the style of the board dynamically
