@@ -24,12 +24,17 @@ function soundtrack() {
 
 const boardUI = document.getElementById("board");
 
+const isColumnFull = (column) => {
+  const topSlot = document.querySelector(`[column="${column}"][row="${0}"]`);
+  return topSlot.hasAttribute("filledBy");
+};
+
 function startClassicGame() {
   let game = new Game(6, 7);
   console.log(game);
   let slots = Array.from(document.getElementsByClassName("slot"));
 
-  slots.map((slot) => {
+  slots.forEach((slot) => {
     slot.addEventListener("click", (e) => {
       // where the event is triggered
       console.log("SLOT: ", e.target);
@@ -46,16 +51,7 @@ function startClassicGame() {
           `[column="${currentColumn}"][row="${i}"]`
         );
 
-        let topSlot = document.querySelector(
-          `[column="${currentColumn}"][row="${0}"]`
-        );
-
-        topSlot.style.backgroundColor = "green";
-
-        if (topSlot.hasAttribute("filledBy")) {
-          // TO DO- MAKE SURE TOP COLUMN KEEPS STYLE EVEN AFTER CLICKED
-          return;
-        }
+        if (isColumnFull(currentColumn)) return;
 
         if (openSlot.getAttribute("filledBy") === null) {
           coinIn();
@@ -69,8 +65,7 @@ function startClassicGame() {
           //check for winning condition
 
           // switch players
-          game.currentPlayer =
-            game.currentPlayer === "player1" ? "player2" : "player1";
+          game.togglePlayer();
 
           console.log(game.currentPlayer);
           return;

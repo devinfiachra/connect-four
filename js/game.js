@@ -1,7 +1,7 @@
 class Game {
-  constructor() {
-    this.rows = 6;
-    this.columns = 7;
+  constructor(rows, columns) {
+    this.rows = rows || 6;
+    this.columns = columns || 7;
     (this.boardMatrix = this.createBoard()),
       (this.winCondition = 4),
       (this.currentPlayer = "player1"),
@@ -13,10 +13,9 @@ class Game {
   }
 
   createBoard() {
-    let board = [];
+    const board = [];
 
     for (let i = 0; i < this.rows; i++) {
-      console.log(i);
       board.push(Array(this.columns).fill(0));
     }
 
@@ -29,8 +28,8 @@ class Game {
     let counter = 0;
 
     for (let i = 0; i < this.rows; i++) {
-      const rowElemet = document.createElement("div");
-      rowElemet.classList.add("row");
+      const rowElement = document.createElement("div");
+      rowElement.classList.add("row");
 
       for (let j = 0; j < this.columns; j++) {
         const columnELement = document.createElement("div");
@@ -38,12 +37,17 @@ class Game {
         columnELement.setAttribute("id", `${counter}`);
         columnELement.setAttribute("row", `${i}`);
         columnELement.setAttribute("column", `${j}`);
-        rowElemet.appendChild(columnELement);
+        rowElement.appendChild(columnELement);
         counter++;
       }
 
-      parentBoard.appendChild(rowElemet);
+      parentBoard.appendChild(rowElement);
     }
+  }
+
+  togglePlayer() {
+    this.currentPlayer =
+      this.currentPlayer === "player1" ? "player2" : "player1";
   }
 
   setupClassic() {
