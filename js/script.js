@@ -14,12 +14,11 @@ function coinIn() {
 }
 
 function soundtrack() {
-  let music = new Audio("../styles/audio/soundtrack/radiohead/default.mp3");
-  console.log(music.volume);
-
-  alert("MUSIC");
+  let music = new Audio("../styles/audio/soundtrack/arctic-monkeys/tbhanc.mp3");
   music.play();
 }
+
+// TO DO: add a class to elements which take a color, and create a querySelectorAll function to map over them and apply a class primary, secondary so that a user can change the style of the board dynamically
 
 // SETUP -> GAME START
 
@@ -28,7 +27,6 @@ const boardUI = document.getElementById("board");
 function startClassicGame() {
   let game = new Game(6, 7);
   console.log(game);
-
   let slots = Array.from(document.getElementsByClassName("slot"));
 
   slots.map((slot) => {
@@ -37,20 +35,47 @@ function startClassicGame() {
       console.log("SLOT: ", e.target);
 
       // where the game piece should go
-      let CurrentRow = e.target.getAttribute("row");
-      let CurrentColumn = e.target.getAttribute("column");
+      let currentRow = e.target.getAttribute("row");
+      let currentColumn = e.target.getAttribute("column");
       console.log("Row: ", e.target.getAttribute("row"));
       console.log("Column: ", e.target.getAttribute("column"));
-      game.boardMatrix[CurrentRow][CurrentColumn] = 1;
 
       //loop from the bottom to the top of the rows (Board Height)
       for (let i = game.rows - 1; i >= 0; i--) {
-        console.log(i);
-      }
+        let openSlot = document.querySelector(
+          `[column="${currentColumn}"][row="${i}"]`
+        );
 
-      coinIn();
-      e.target.style.backgroundColor = "red";
-      console.log(game.boardMatrix);
+        let topSlot = document.querySelector(
+          `[column="${currentColumn}"][row="${0}"]`
+        );
+
+        topSlot.style.backgroundColor = "green";
+
+        if (topSlot.hasAttribute("filledBy")) {
+          // TO DO- MAKE SURE TOP COLUMN KEEPS STYLE EVEN AFTER CLICKED
+          return;
+        }
+
+        if (openSlot.getAttribute("filledBy") === null) {
+          coinIn();
+          openSlot.setAttribute("filledBy", game.currentPlayer);
+          openSlot.style.backgroundColor = game.playerColor[game.currentPlayer];
+          game.boardMatrix[i][currentColumn] = game.currentPlayer;
+
+          // this is the board in the background which we will run the wingame function on
+          console.log(game.boardMatrix);
+
+          //check for winning condition
+
+          // switch players
+          game.currentPlayer =
+            game.currentPlayer === "player1" ? "player2" : "player1";
+
+          console.log(game.currentPlayer);
+          return;
+        }
+      }
     });
   });
 }

@@ -6,7 +6,8 @@ class Game {
       (this.winCondition = 4),
       (this.currentPlayer = "player1"),
       (this.score = [0, 0]);
-    this.theme = "";
+    (this.playerColor = { player1: "magenta", player2: "blue" }),
+      (this.theme = "");
     this.powerUpMode = false;
     this.createBoardUI();
   }
@@ -52,7 +53,7 @@ class Game {
     this.theme = "classic";
   }
 
-  checkForWinner() {
+  checkForWinner(matrix) {
     //console.log("Checked For Winner");
   }
 
