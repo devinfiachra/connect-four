@@ -157,6 +157,11 @@ body {
   width: 100%;
 }
 
+.slot:hover {
+  cursor: pointer;
+  opacity: 0.6;
+}
+
 /* END GAME SCREEN */
 #end-game-screen {
   background-color: springgreen;

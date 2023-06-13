@@ -5,6 +5,20 @@ const customGameScreen = document.getElementById("custom-game-menu-screen");
 const gameScreen = document.getElementById("game-screen");
 const endGameScreen = document.getElementById("end-game-screen");
 
+//MUSIC
+
+function coinIn() {
+  let coinDrop = new Audio("../styles/audio/game/coinDrop.wav");
+  console.log("SOUND");
+  coinDrop.play();
+}
+
+function soundtrack() {
+  let coinDrop = new Audio("../styles/audio/soundtrack/radiohead/myxo.m4a");
+  console.log("SOUND");
+  coinDrop.play();
+}
+
 // SETUP -> GAME START
 
 const boardUI = document.getElementById("board");
@@ -32,6 +46,7 @@ function startClassicGame() {
         console.log(i);
       }
 
+      coinIn();
       e.target.style.backgroundColor = "red";
       console.log(game.boardMatrix);
     });
@@ -52,6 +67,7 @@ const optionsMenu = document.getElementById("open-options");
 startButton.addEventListener("click", (e) => {
   startScreen.style.visibility = "hidden";
   gameScreen.style.visibility = "visible";
+  soundtrack();
   startClassicGame();
 });
 
