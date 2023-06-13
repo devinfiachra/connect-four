@@ -8,15 +8,17 @@ const endGameScreen = document.getElementById("end-game-screen");
 //MUSIC
 
 function coinIn() {
-  let coinDrop = new Audio("../styles/audio/game/coinDrop.wav");
+  let sound = new Audio("../styles/audio/game/coinDrop.wav");
   console.log("SOUND");
-  coinDrop.play();
+  sound.play();
 }
 
 function soundtrack() {
-  let coinDrop = new Audio("../styles/audio/soundtrack/radiohead/myxo.m4a");
-  console.log("SOUND");
-  coinDrop.play();
+  let music = new Audio("../styles/audio/soundtrack/radiohead/default.mp3");
+  console.log(music.volume);
+
+  alert("MUSIC");
+  music.play();
 }
 
 // SETUP -> GAME START
