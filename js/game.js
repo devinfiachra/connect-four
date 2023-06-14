@@ -51,15 +51,57 @@ class Game {
   }
 
   setupClassic() {
-    // console.log("A CLASSIC GAME HAS STARTED");
     this.winCondition = 4;
     this.powerUpMode = false;
     this.theme = "classic";
   }
 
-  checkForWinner(matrix) {
-    //console.log("Checked For Winner");
+  // rows is height, columns are width;
+  checkForWinner() {
+    this.checkVerticalWin();
+    this.checkHorizontalWin();
+    this.checkDiagonalWin();
   }
+
+  checkVerticalWin() {
+    for (let i = 0; i < this.rows - 1; i++) {
+      let counter = 0;
+
+      for (let k = 0; k < this.columns - 1; k++) {
+        counter += this.boardMatrix[k][i];
+
+        if (counter === this.winCondition) {
+          return alert("player1 vertical win!");
+        }
+
+        if (counter === -1 * this.winCondition) {
+          return alert("player2 vertical win!");
+        }
+      }
+    }
+  }
+
+  checkHorizontalWin() {
+    for (let i = 0; i < this.rows; i++) {
+      let counter = 0;
+
+      for (let k = 0; k < this.columns - 1; k++) {
+        counter += this.boardMatrix[i][k];
+
+        if (counter === this.winCondition) {
+          return alert("player1 horizontal win!");
+        }
+
+        if (counter === -1 * this.winCondition) {
+          return alert("player2 horizontal win!");
+        }
+      }
+    }
+  }
+
+  checkDiagonalWin() {}
+
+  checkDraw() {}
 
   newGame() {}
 }

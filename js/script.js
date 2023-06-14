@@ -9,7 +9,7 @@ const endGameScreen = document.getElementById("end-game-screen");
 //MUSIC
 
 async function fetchSoundFiles() {
-  var response = await fetch("../styles/audio/soundtrack/misc");
+  var response = await fetch("styles/audio/soundtrack/misc");
   var data = await response.text();
   var parser = new DOMParser();
   var html = parser.parseFromString(data, "text/html");
@@ -17,14 +17,13 @@ async function fetchSoundFiles() {
 
   var soundFiles = Array.from(links)
     .map((link) => link.href)
-    .filter((href) => href.endsWith(".mp3")); // Adjust the file extension if needed
+    .filter((href) => href.endsWith(".mp3") || href.endsWith(".m4a")); // Adjust the file extension if needed
 
   return soundFiles;
 }
 
 function coinIn() {
   const sound = new Audio(coinDrop);
-  console.log("SOUND");
   sound.play();
 }
 
@@ -40,6 +39,8 @@ function soundtrack() {
   });
 }
 
+// CHECK WINS
+
 // TO DO: add a class to elements which take a color, and create a querySelectorAll function to map over them and apply a class primary, secondary so that a user can change the style of the board dynamically
 
 // SETUP -> GAME START
@@ -53,7 +54,6 @@ const isColumnFull = (column) => {
 
 function startClassicGame() {
   let game = new Game(6, 7);
-  console.log(game);
   let slots = Array.from(document.getElementsByClassName("slot"));
 
   slots.forEach((slot) => {
@@ -79,17 +79,18 @@ function startClassicGame() {
           coinIn();
           openSlot.setAttribute("filledBy", game.currentPlayer);
           openSlot.style.backgroundColor = game.playerColor[game.currentPlayer];
-          game.boardMatrix[i][currentColumn] = game.currentPlayer;
 
-          // this is the board in the background which we will run the wingame function on
-          console.log(game.boardMatrix);
+          game.boardMatrix[i][currentColumn] =
+            game.currentPlayer === "player1" ? 1 : -1;
 
           //check for winning condition
+          game.checkForWinner();
+
+          //END GAME
 
           // switch players
           game.togglePlayer();
 
-          console.log(game.currentPlayer);
           return;
         }
       }
@@ -99,7 +100,6 @@ function startClassicGame() {
 
 function startCustomGame(rows, columns, toWin, theme, music, powerUp) {
   let customGame = new CustomGame();
-  console.log(customGame);
 }
 
 // START MENU
