@@ -22,6 +22,17 @@ class Game {
     return board;
   }
 
+  testArray() {
+    return [
+      [0, 0, 0, 0, 0, 0, 0],
+      [0, 0, 0, 0, 0, 0, 0],
+      [0, 0, 0, 0, 0, 0, 0],
+      [0, 0, 0, 0, 0, 0, 0],
+      [0, 0, 0, 0, 0, 0, 0],
+      [0, 0, 0, 0, 0, 0, 0],
+    ];
+  }
+
   createBoardUI() {
     const parentBoard = document.getElementById("board");
 
@@ -60,7 +71,9 @@ class Game {
   checkForWinner() {
     this.checkVerticalWin();
     this.checkHorizontalWin();
-    this.checkDiagonalWin();
+    this.checkDiagonalRight();
+    this.checkDiagonalLeft();
+    this.checkDraw();
   }
 
   checkVerticalWin() {
@@ -99,9 +112,49 @@ class Game {
     }
   }
 
-  checkDiagonalWin() {}
+  checkDiagonalRight() {
+    for (let i = 0; i <= this.rows - this.winCondition; i++) {
+      let counter = 0;
 
-  checkDraw() {}
+      for (let j = 0; j <= this.columns - this.winCondition; j++) {
+        console.log("JJJJJ: ", j);
+        counter +=
+          this.boardMatrix[i][j] +
+          this.boardMatrix[i + 1][j + 1] +
+          this.boardMatrix[i + 2][j + 2] +
+          this.boardMatrix[i + 3][j + 3];
+      }
+
+      console.log("DIAGONAL COUNTER!: ", counter);
+
+      if (counter === this.winCondition) {
+        return alert("player1 diagonal win right!");
+      }
+      if (counter === -1 * this.winCondition) {
+        return alert("player2 diagonal win right!");
+      }
+    }
+  }
+
+  checkDiagonalLeft() {
+    // for (let i = 0; i + 3 < arr.length; i++) {
+    //   let counter = 0;
+    //   for (let j = arr[i].length - 1; j - 3 >= 0; j--) {
+    //     counter +=
+    //       arr[i][j] + arr[i + 1][j - 1] + arr[i + 2][j - 2] + arr[i + 3][j - 3];
+    //   }
+    //   if (counter === this.winCondition) {
+    //     return alert("player1 diagonal win left!");
+    //   }
+    //   if (counter === -1 * this.winCondition) {
+    //     return alert("player2 diagonal win left!");
+    //   }
+    // }
+  }
+
+  checkDraw() {
+    console.log("Check Draw!");
+  }
 
   newGame() {}
 }

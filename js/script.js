@@ -1,6 +1,7 @@
-// Screens
-const coinDrop = "../styles/audio/game/coinDrop.wav";
+const coinDrop = "styles/audio/game/coinDrop.wav";
+const warn = "styles/audio/game/warning.mp3";
 
+// Screens
 const startScreen = document.getElementById("start-screen");
 const customGameScreen = document.getElementById("custom-game-menu-screen");
 const gameScreen = document.getElementById("game-screen");
@@ -9,7 +10,7 @@ const endGameScreen = document.getElementById("end-game-screen");
 //MUSIC
 
 async function fetchSoundFiles() {
-  var response = await fetch("styles/audio/soundtrack/misc");
+  var response = await fetch("styles/audio/soundtrack/radiohead");
   var data = await response.text();
   var parser = new DOMParser();
   var html = parser.parseFromString(data, "text/html");
@@ -25,6 +26,11 @@ async function fetchSoundFiles() {
 function coinIn() {
   const sound = new Audio(coinDrop);
   sound.play();
+}
+
+function warning() {
+  const warning = new Audio(warn);
+  warning.play();
 }
 
 function soundtrack() {
@@ -59,13 +65,13 @@ function startClassicGame() {
   slots.forEach((slot) => {
     slot.addEventListener("click", (e) => {
       // where the event is triggered
-      console.log("SLOT: ", e.target);
+      // console.log("SLOT: ", e.target);
 
       // where the game piece should go
       let currentRow = e.target.getAttribute("row");
       let currentColumn = e.target.getAttribute("column");
-      console.log("Row: ", e.target.getAttribute("row"));
-      console.log("Column: ", e.target.getAttribute("column"));
+      // console.log("Row: ", e.target.getAttribute("row"));
+      // console.log("Column: ", e.target.getAttribute("column"));
 
       //loop from the bottom to the top of the rows (Board Height)
       for (let i = game.rows - 1; i >= 0; i--) {
@@ -73,7 +79,10 @@ function startClassicGame() {
           `[column="${currentColumn}"][row="${i}"]`
         );
 
-        if (isColumnFull(currentColumn)) return;
+        if (isColumnFull(currentColumn)) {
+          warning();
+          return;
+        }
 
         if (openSlot.getAttribute("filledBy") === null) {
           coinIn();
