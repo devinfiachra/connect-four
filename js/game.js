@@ -81,6 +81,10 @@ class Game {
       let counter = 0;
 
       for (let k = 0; k < this.columns - 1; k++) {
+        if (this.boardMatrix[k][i] === 0) {
+          counter = 0;
+        }
+
         counter += this.boardMatrix[k][i];
 
         if (counter === this.winCondition) {
@@ -99,6 +103,10 @@ class Game {
       let counter = 0;
 
       for (let k = 0; k < this.columns - 1; k++) {
+        if (this.boardMatrix[i][k] === 0) {
+          counter = 0;
+        }
+
         counter += this.boardMatrix[i][k];
 
         if (counter === this.winCondition) {
