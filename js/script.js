@@ -1,6 +1,3 @@
-const coinDrop = "styles/audio/game/coinDrop.wav";
-const warn = "styles/audio/game/warning.mp3";
-
 // Screens
 const startScreen = document.getElementById("start-screen");
 const customGameScreen = document.getElementById("custom-game-menu-screen");
@@ -10,7 +7,7 @@ const endGameScreen = document.getElementById("end-game-screen");
 //MUSIC
 
 async function fetchSoundFiles() {
-  var response = await fetch("styles/audio/soundtrack/misc");
+  var response = await fetch("styles/audio/soundtrack/monkeys");
   var data = await response.text();
   var parser = new DOMParser();
   var html = parser.parseFromString(data, "text/html");
@@ -21,16 +18,6 @@ async function fetchSoundFiles() {
     .filter((href) => href.endsWith(".mp3") || href.endsWith(".m4a")); // Adjust the file extension if needed
 
   return soundFiles;
-}
-
-function coinIn() {
-  const sound = new Audio(coinDrop);
-  sound.play();
-}
-
-function warning() {
-  const warning = new Audio(warn);
-  warning.play();
 }
 
 function soundtrack() {
@@ -45,7 +32,35 @@ function soundtrack() {
   });
 }
 
-// CHECK WINS
+function coinIn(currentPlayer) {
+  const coinDrop = `styles/audio/game/${currentPlayer}.wav`;
+  const sound = new Audio(coinDrop);
+  sound.play();
+}
+
+function warning() {
+  const warn = "styles/audio/game/warning.mp3";
+  const warning = new Audio(warn);
+  warning.play();
+}
+
+function select() {
+  const beep = "styles/audio/game/select.wav";
+  const confirm = new Audio(beep);
+  confirm.play();
+}
+
+function navBack() {
+  const beep = "styles/audio/game/return.wav";
+  const nav = new Audio(beep);
+  nav.play();
+}
+
+function resetPieces() {
+  const beep = "styles/audio/game/reset.wav";
+  const reset = new Audio(beep);
+  reset.play();
+}
 
 // TO DO: add a class to elements which take a color, and create a querySelectorAll function to map over them and apply a class primary, secondary so that a user can change the style of the board dynamically
 
@@ -59,7 +74,9 @@ const isColumnFull = (column) => {
   return topSlot.hasAttribute("filledBy");
 };
 
-function startClassicGame() {
+let gameStyle = "";
+
+function startGame() {
   let game = new Game();
   let slots = Array.from(document.getElementsByClassName("slot"));
 
@@ -81,7 +98,7 @@ function startClassicGame() {
         }
 
         if (openSlot.getAttribute("filledBy") === null) {
-          coinIn();
+          coinIn(game.currentPlayer);
           openSlot.setAttribute("filledBy", game.currentPlayer);
           openSlot.setAttribute("filled", "true");
           openSlot.style.backgroundColor = game.playerColor[game.currentPlayer];
@@ -130,7 +147,9 @@ function startClassicGame() {
             // THE REMATCH FUNCTION
 
             const rematch = document.getElementById("rematch");
+
             rematch.addEventListener("click", (e) => {
+              select();
               game.newGame();
 
               slots
@@ -140,7 +159,8 @@ function startClassicGame() {
                     slot.removeAttribute("filledBy");
                     slot.removeAttribute("filled");
                     slot.style.backgroundColor = "black";
-                  }, 300);
+                    resetPieces();
+                  }, 1000);
                 });
 
               return (endGameScreen.style.visibility = "hidden");
@@ -172,8 +192,9 @@ const optionsMenu = document.getElementById("open-options");
 startButton.addEventListener("click", (e) => {
   startScreen.style.visibility = "hidden";
   gameScreen.style.visibility = "visible";
+  select();
   soundtrack();
-  startClassicGame();
+  startGame();
 });
 
 // START MENU -> CUSTOM GAME MENU -> START CUSTOM GAME
@@ -181,6 +202,7 @@ startButton.addEventListener("click", (e) => {
 optionsMenu.addEventListener("click", (e) => {
   startScreen.style.visibility = "hidden";
   customGameScreen.style.visibility = "visible";
+  select();
 });
 
 const customStart = document.getElementById("custom-menu-start");
@@ -188,7 +210,7 @@ const backButton = document.getElementById("custom-back-button");
 
 customStart.addEventListener("click", (e) => {
   customGameScreen.style.visibility = "hidden";
-
+  select();
   // ADD RULES TO TAKE CUSTOM PARAMETERS FROM CUSTOM FORM AND CREATE CUSTOM GAME FROM THE USER INPUT
   startCustomGame();
 
@@ -198,4 +220,5 @@ customStart.addEventListener("click", (e) => {
 backButton.addEventListener("click", (e) => {
   startScreen.style.visibility = "visible";
   customGameScreen.style.visibility = "hidden";
+  navBack();
 });

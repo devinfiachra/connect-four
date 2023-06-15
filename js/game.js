@@ -14,7 +14,6 @@ class Game {
         draw: "springgreen",
       }),
       (this.theme = "");
-    this.powerUpMode = false;
     this.createBoardUI();
   }
 
@@ -63,7 +62,6 @@ class Game {
 
   setupClassic() {
     this.winCondition = 4;
-    this.powerUpMode = false;
     this.theme = "classic";
   }
 

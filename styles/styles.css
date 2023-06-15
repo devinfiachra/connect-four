@@ -165,10 +165,10 @@ body {
 
 /* END GAME SCREEN */
 #end-game-screen {
-  background-color: magenta;
-  opacity: 0.9;
-  height: 40vh;
-  width: 100vw;
+  border: 5px solid springgreen;
+  opacity: 0.95;
+  height: 50vh;
+  width: 75vw;
   overflow: hidden;
   margin: 0;
   padding: 0;
@@ -179,6 +179,40 @@ body {
   flex-direction: column;
   align-items: center;
   justify-content: center;
+}
+
+.end-game-text-container {
+  font-size: 4vw;
+  width: 100%;
+  height: 55%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+.end-game-buttons-container {
+  height: 25%;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+.end-game-button {
+  opacity: 1;
+  font-size: 2.5vw;
+  background-color: black;
+  border: 4px solid springgreen;
+  margin: 0;
+  padding-top: 1%;
+  height: 80%;
+  width: 35%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
 }
 
 /* PIECES */
