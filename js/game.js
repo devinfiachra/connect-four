@@ -72,10 +72,10 @@ class Game {
   }
 
   checkVerticalWin() {
-    for (let i = 0; i < this.rows - 1; i++) {
+    for (let i = 0; i < this.columns - 1; i++) {
       let counter = 0;
 
-      for (let k = 0; k <= this.columns - 1; k++) {
+      for (let k = 0; k < this.rows; k++) {
         if (this.boardMatrix[k][i] === 0) {
           counter = 0;
         } else {
@@ -146,29 +146,26 @@ class Game {
   }
 
   checkDiagonalLeft() {
-    console.log("wip");
-    // for (let i = 0; i <= this.rows - this.winCondition; i++) {
-    //   for (let j = this.columns - 1; j + 1 - this.winCondition >= 0; j--) {
-    //     let counter = 0;
+    for (let i = 0; i <= this.rows - this.winCondition; i++) {
+      for (let j = this.columns - 1; j + 1 - this.winCondition >= 0; j--) {
+        let counter = 0;
 
-    //     counter +=
-    //       this.boardMatrix[i][j] +
-    //       this.boardMatrix[i + 1][j - 1] +
-    //       this.boardMatrix[i + 2][j - 2] +
-    //       this.boardMatrix[i + 3][j - 3];
+        for (let k = 0; k < this.winCondition; k++) {
+          counter += this.boardMatrix[i + k][j - k];
+        }
 
-    //     if (counter === this.winCondition) {
-    //       this.winner = "player1";
-    //       this.gameOver = true;
-    //       return;
-    //     }
-    //     if (counter === -1 * this.winCondition) {
-    //       this.winner = "player2";
-    //       this.gameOver = true;
-    //       return;
-    //     }
-    //   }
-    // }
+        if (counter === this.winCondition) {
+          this.winner = "player1";
+          this.gameOver = true;
+          return;
+        }
+        if (counter === -1 * this.winCondition) {
+          this.winner = "player2";
+          this.gameOver = true;
+          return;
+        }
+      }
+    }
   }
 
   checkDraw(filled, total) {

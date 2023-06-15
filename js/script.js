@@ -60,7 +60,7 @@ const isColumnFull = (column) => {
 };
 
 function startClassicGame() {
-  let game = new Game(8, 8, 6);
+  let game = new Game(8, 8, 5);
   let slots = Array.from(document.getElementsByClassName("slot"));
 
   slots.forEach((slot) => {
