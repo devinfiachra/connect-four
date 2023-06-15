@@ -60,7 +60,7 @@ const isColumnFull = (column) => {
 };
 
 function startClassicGame() {
-  let game = new Game(8, 8, 5);
+  let game = new Game();
   let slots = Array.from(document.getElementsByClassName("slot"));
 
   slots.forEach((slot) => {
@@ -120,6 +120,10 @@ function startClassicGame() {
                 : "STALEMATE";
 
             endgameScore.innerText = `${game.score.total}`;
+
+            endGameScreen.style.backgroundColor = `${
+              game.playerColor[game.winner]
+            }`;
 
             endGameScreen.style.visibility = "visible";
 

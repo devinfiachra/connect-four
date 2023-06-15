@@ -8,7 +8,11 @@ class Game {
       (this.winner = ""),
       (this.gameOver = false);
     (this.score = { player1: 0, player2: 0, draw: 0, total: "" }),
-      (this.playerColor = { player1: "magenta", player2: "blue" }),
+      (this.playerColor = {
+        player1: "magenta",
+        player2: "blue",
+        draw: "springgreen",
+      }),
       (this.theme = "");
     this.powerUpMode = false;
     this.createBoardUI();
