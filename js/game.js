@@ -27,9 +27,9 @@ class Game {
     return [
       [0, 0, 0, 0, 0, 0, 0],
       [0, 0, 0, 0, 0, 0, 0],
-      [0, 0, -1, 1, 0, 0, 0],
-      [0, 0, 0, -1, 1, 0, 0],
-      [0, 0, 0, 0, -1, 1, 0],
+      [0, 0, 0, 1, -1, 0, 0],
+      [0, 0, 1, -1, 0, 0, 0],
+      [0, 1, -1, 0, 0, 0, 0],
       [0, 0, 0, 0, 0, 0, 0],
     ];
   }
@@ -144,19 +144,24 @@ class Game {
   }
 
   checkDiagonalLeft() {
-    // for (let i = 0; i + 3 < arr.length; i++) {
-    //   let counter = 0;
-    //   for (let j = arr[i].length - 1; j - 3 >= 0; j--) {
-    //     counter +=
-    //       arr[i][j] + arr[i + 1][j - 1] + arr[i + 2][j - 2] + arr[i + 3][j - 3];
-    //   }
-    //   if (counter === this.winCondition) {
-    //     return alert("player1 diagonal win left!");
-    //   }
-    //   if (counter === -1 * this.winCondition) {
-    //     return alert("player2 diagonal win left!");
-    //   }
-    // }
+    for (let i = 0; i <= this.rows - this.winCondition; i++) {
+      for (let j = this.columns - 1; j + 1 - this.winCondition >= 0; j--) {
+        let counter = 0;
+
+        counter +=
+          this.boardMatrix[i][j] +
+          this.boardMatrix[i + 1][j - 1] +
+          this.boardMatrix[i + 2][j - 2] +
+          this.boardMatrix[i + 3][j - 3];
+
+        if (counter === this.winCondition) {
+          return alert("player1 diagonal win left!");
+        }
+        if (counter === -1 * this.winCondition) {
+          return alert("player2 diagonal win left!");
+        }
+      }
+    }
   }
 
   checkDraw() {
