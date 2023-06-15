@@ -2,8 +2,7 @@ class Game {
   constructor(rows, columns) {
     this.rows = rows || 6;
     this.columns = columns || 7;
-    // (this.boardMatrix = this.createBoard()),
-    (this.boardMatrix = this.testArray()),
+    (this.boardMatrix = this.createBoard()),
       (this.winCondition = 4),
       (this.currentPlayer = "player1"),
       (this.score = [0, 0]);
@@ -21,17 +20,6 @@ class Game {
     }
 
     return board;
-  }
-
-  testArray() {
-    return [
-      [0, 0, 0, 0, 0, 0, 0],
-      [0, 0, 0, 0, 0, 0, 0],
-      [0, 0, 0, 1, -1, 0, 0],
-      [0, 0, 1, -1, 0, 0, 0],
-      [0, 1, -1, 0, 0, 0, 0],
-      [0, 0, 0, 0, 0, 0, 0],
-    ];
   }
 
   createBoardUI() {
@@ -74,7 +62,6 @@ class Game {
     this.checkHorizontalWin();
     this.checkDiagonalRight();
     this.checkDiagonalLeft();
-    this.checkDraw();
   }
 
   checkVerticalWin() {
@@ -126,6 +113,7 @@ class Game {
       for (let j = 0; j <= this.columns - this.winCondition; j++) {
         let counter = 0;
 
+        // generate checker based on board size - Make this function dynamic
         counter +=
           this.boardMatrix[i][j] +
           this.boardMatrix[i + 1][j + 1] +
@@ -164,8 +152,10 @@ class Game {
     }
   }
 
-  checkDraw() {
-    console.log("Check Draw!");
+  checkDraw(filled, total) {
+    if (filled == total) {
+      return alert("DRAW GAME");
+    }
   }
 
   newGame() {}

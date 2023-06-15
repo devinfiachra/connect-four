@@ -10,7 +10,7 @@ const endGameScreen = document.getElementById("end-game-screen");
 //MUSIC
 
 async function fetchSoundFiles() {
-  var response = await fetch("styles/audio/soundtrack/radiohead");
+  var response = await fetch("styles/audio/soundtrack/misc");
   var data = await response.text();
   var parser = new DOMParser();
   var html = parser.parseFromString(data, "text/html");
@@ -55,6 +55,7 @@ const boardUI = document.getElementById("board");
 
 const isColumnFull = (column) => {
   const topSlot = document.querySelector(`[column="${column}"][row="${0}"]`);
+
   return topSlot.hasAttribute("filledBy");
 };
 
@@ -87,16 +88,21 @@ function startClassicGame() {
         if (openSlot.getAttribute("filledBy") === null) {
           coinIn();
           openSlot.setAttribute("filledBy", game.currentPlayer);
+          openSlot.setAttribute("filled", "true");
           openSlot.style.backgroundColor = game.playerColor[game.currentPlayer];
 
           game.boardMatrix[i][currentColumn] =
             game.currentPlayer === "player1" ? 1 : -1;
 
-          console.log(game.boardMatrix);
-
           //check for winning condition
           game.checkForWinner();
 
+          // check for Draw
+          let occupiedSlots = Array.from(
+            document.querySelectorAll(`[filled="true"]`)
+          );
+
+          game.checkDraw(occupiedSlots.length, slots.length);
           //END GAME
 
           // switch players
