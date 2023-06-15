@@ -7,13 +7,13 @@ const endGameScreen = document.getElementById("end-game-screen");
 //MUSIC
 
 async function fetchSoundFiles() {
-  var response = await fetch("styles/audio/soundtrack/monkeys");
-  var data = await response.text();
-  var parser = new DOMParser();
-  var html = parser.parseFromString(data, "text/html");
-  var links = html.querySelectorAll("a");
+  let response = await fetch("styles/audio/soundtrack/monkeys");
+  let data = await response.text();
+  let parser = new DOMParser();
+  let html = parser.parseFromString(data, "text/html");
+  let links = html.querySelectorAll("a");
 
-  var soundFiles = Array.from(links)
+  let soundFiles = Array.from(links)
     .map((link) => link.href)
     .filter((href) => href.endsWith(".mp3") || href.endsWith(".m4a")); // Adjust the file extension if needed
 

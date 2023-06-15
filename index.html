@@ -22,14 +22,52 @@
     </div>
 
     <div id="custom-game-menu-screen">
-      <div id="custom-menu">
-        <div>BOARD ROWS</div>
-        <div>BOARD COLUMNS</div>
-        <div>WIN CONDITION</div>
-        <div>THEME</div>
-        <div>MUSIC</div>
-        <div>POWERUP MODE</div>
+      
+      <div id="custom-menu">    
+        
+        <div id="custom-head">
+          <div>CUSTOM GAME</div>
+        </div>
+
+        <div class="custom-container">
+          <div class="custom-text">BOARD ROWS</div>
+          <div class="custom-input">
+            <input type="text" id="custom-rows" placeholder="6" maxlength="2">
+          </div>
+        </div>
+
+        <div class="custom-container">
+          <div class="custom-text">BOARD COLUMNS</div>
+          <div class="custom-input">
+            <input type="text" id="custom-colums" placeholder="7" maxlength="2">
+          </div>
+        </div>
+
+        <div class="custom-container">
+          <div class="custom-text">WIN CONDITION</div>
+          <div class="custom-input">
+            <input type="text" id="custom-win-condition" placeholder="4" maxlength="2">
+          </div>
+        </div>
+
+        <div class="custom-container">
+          <div class="custom-text">THEME</div>
+          <div class="custom-input">
+            <input type="text" id="custom-theme" placeholder="CLASSIC">
+          </div>
+        </div>
+      
+        <div class="custom-container">
+          <div class="custom-text">SOUNDTRACK</div>
+          <div class="custom-input">
+            <input type="text" id="custom-music" placeholder="RADIOHEAD">
+          </div>
+        </div>
+        
+
+        
       </div>
+
       <div id="custom-menu-buttons">
         <div class="custom-menu-button" id="custom-menu-start">START</div>
         <div class="custom-menu-button" id="custom-back-button">BACK</div>
@@ -57,6 +95,7 @@
     </div>
 
   </div>
+
 
    
     <script src="js/game.js"></script>
