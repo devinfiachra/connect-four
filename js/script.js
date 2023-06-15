@@ -92,6 +92,8 @@ function startClassicGame() {
           game.boardMatrix[i][currentColumn] =
             game.currentPlayer === "player1" ? 1 : -1;
 
+          console.log(game.boardMatrix);
+
           //check for winning condition
           game.checkForWinner();
 

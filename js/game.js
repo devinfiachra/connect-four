@@ -2,7 +2,8 @@ class Game {
   constructor(rows, columns) {
     this.rows = rows || 6;
     this.columns = columns || 7;
-    (this.boardMatrix = this.createBoard()),
+    // (this.boardMatrix = this.createBoard()),
+    (this.boardMatrix = this.testArray()),
       (this.winCondition = 4),
       (this.currentPlayer = "player1"),
       (this.score = [0, 0]);
@@ -26,9 +27,9 @@ class Game {
     return [
       [0, 0, 0, 0, 0, 0, 0],
       [0, 0, 0, 0, 0, 0, 0],
-      [0, 0, 0, 0, 0, 0, 0],
-      [0, 0, 0, 0, 0, 0, 0],
-      [0, 0, 0, 0, 0, 0, 0],
+      [0, 0, -1, 1, 0, 0, 0],
+      [0, 0, 0, -1, 1, 0, 0],
+      [0, 0, 0, 0, -1, 1, 0],
       [0, 0, 0, 0, 0, 0, 0],
     ];
   }
@@ -83,9 +84,9 @@ class Game {
       for (let k = 0; k < this.columns - 1; k++) {
         if (this.boardMatrix[k][i] === 0) {
           counter = 0;
+        } else {
+          counter += this.boardMatrix[k][i];
         }
-
-        counter += this.boardMatrix[k][i];
 
         if (counter === this.winCondition) {
           return alert("player1 vertical win!");
@@ -105,9 +106,9 @@ class Game {
       for (let k = 0; k < this.columns - 1; k++) {
         if (this.boardMatrix[i][k] === 0) {
           counter = 0;
+        } else {
+          counter += this.boardMatrix[i][k];
         }
-
-        counter += this.boardMatrix[i][k];
 
         if (counter === this.winCondition) {
           return alert("player1 horizontal win!");
@@ -122,24 +123,22 @@ class Game {
 
   checkDiagonalRight() {
     for (let i = 0; i <= this.rows - this.winCondition; i++) {
-      let counter = 0;
-
       for (let j = 0; j <= this.columns - this.winCondition; j++) {
-        console.log("JJJJJ: ", j);
+        let counter = 0;
+
         counter +=
           this.boardMatrix[i][j] +
           this.boardMatrix[i + 1][j + 1] +
           this.boardMatrix[i + 2][j + 2] +
           this.boardMatrix[i + 3][j + 3];
-      }
 
-      console.log("DIAGONAL COUNTER!: ", counter);
+        if (counter === this.winCondition) {
+          return alert("player1 diagonal win right!");
+        }
 
-      if (counter === this.winCondition) {
-        return alert("player1 diagonal win right!");
-      }
-      if (counter === -1 * this.winCondition) {
-        return alert("player2 diagonal win right!");
+        if (counter === -1 * this.winCondition) {
+          return alert("player2 diagonal win right!");
+        }
       }
     }
   }
