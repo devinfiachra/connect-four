@@ -175,6 +175,10 @@ body {
   position: absolute;
   visibility: hidden;
   z-index: 850;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
 /* PIECES */

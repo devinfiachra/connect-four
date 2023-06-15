@@ -65,14 +65,9 @@ function startClassicGame() {
 
   slots.forEach((slot) => {
     slot.addEventListener("click", (e) => {
-      // where the event is triggered
-      // console.log("SLOT: ", e.target);
-
       // where the game piece should go
       let currentRow = e.target.getAttribute("row");
       let currentColumn = e.target.getAttribute("column");
-      // console.log("Row: ", e.target.getAttribute("row"));
-      // console.log("Column: ", e.target.getAttribute("column"));
 
       //loop from the bottom to the top of the rows (Board Height)
       for (let i = game.rows - 1; i >= 0; i--) {
@@ -114,6 +109,25 @@ function startClassicGame() {
             game.score[game.winner] += 1;
             endGameScreen.style.visibility = "visible";
 
+            // THE REMATCH FUNCTION
+
+            const rematch = document.getElementById("rematch");
+            rematch.addEventListener("click", (e) => {
+              game.newGame();
+
+              slots
+                .filter((slot) => slot.hasAttribute("filledBy"))
+                .map((slot) => {
+                  setTimeout(() => {
+                    slot.removeAttribute("filledBy");
+                    slot.removeAttribute("filled");
+                    slot.style.backgroundColor = "black";
+                  }, 300);
+                });
+
+              return (endGameScreen.style.visibility = "hidden");
+            });
+
             // add functionality to start game again and display scores
           }
 
@@ -147,7 +161,6 @@ startButton.addEventListener("click", (e) => {
 // START MENU -> CUSTOM GAME MENU -> START CUSTOM GAME
 
 optionsMenu.addEventListener("click", (e) => {
-  alert("CUSTOM GAME MENU");
   startScreen.style.visibility = "hidden";
   customGameScreen.style.visibility = "visible";
 });
@@ -156,7 +169,6 @@ const customStart = document.getElementById("custom-menu-start");
 const backButton = document.getElementById("custom-back-button");
 
 customStart.addEventListener("click", (e) => {
-  alert("CUSTOM GAME MENU");
   customGameScreen.style.visibility = "hidden";
 
   // ADD RULES TO TAKE CUSTOM PARAMETERS FROM CUSTOM FORM AND CREATE CUSTOM GAME FROM THE USER INPUT
@@ -166,7 +178,6 @@ customStart.addEventListener("click", (e) => {
 });
 
 backButton.addEventListener("click", (e) => {
-  alert("CUSTOM GAME MENU");
   startScreen.style.visibility = "visible";
   customGameScreen.style.visibility = "hidden";
 });

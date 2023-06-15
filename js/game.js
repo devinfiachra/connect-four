@@ -47,6 +47,11 @@ class Game {
     }
   }
 
+  clearBoard() {
+    const parentBoard = document.getElementById("board");
+    parentBoard.replaceChildren();
+  }
+
   togglePlayer() {
     this.currentPlayer =
       this.currentPlayer === "player1" ? "player2" : "player1";
@@ -175,5 +180,10 @@ class Game {
     }
   }
 
-  newGame() {}
+  newGame() {
+    this.boardMatrix = this.createBoard();
+    this.winner = "";
+    this.gameOver = false;
+    return;
+  }
 }
