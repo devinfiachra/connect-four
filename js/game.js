@@ -7,7 +7,7 @@ class Game {
       (this.currentPlayer = "player1"),
       (this.winner = ""),
       (this.gameOver = false);
-    (this.score = { player1: 0, player2: 0, draw: 0 }),
+    (this.score = { player1: 0, player2: 0, draw: 0, total: "" }),
       (this.playerColor = { player1: "magenta", player2: "blue" }),
       (this.theme = "");
     this.powerUpMode = false;
@@ -75,7 +75,7 @@ class Game {
     for (let i = 0; i < this.rows - 1; i++) {
       let counter = 0;
 
-      for (let k = 0; k < this.columns - 1; k++) {
+      for (let k = 0; k <= this.columns - 1; k++) {
         if (this.boardMatrix[k][i] === 0) {
           counter = 0;
         } else {
@@ -126,11 +126,9 @@ class Game {
         let counter = 0;
 
         // generate checker based on board size - Make this function dynamic
-        counter +=
-          this.boardMatrix[i][j] +
-          this.boardMatrix[i + 1][j + 1] +
-          this.boardMatrix[i + 2][j + 2] +
-          this.boardMatrix[i + 3][j + 3];
+        for (let k = 0; k < this.winCondition; k++) {
+          counter += this.boardMatrix[i + k][j + k];
+        }
 
         if (counter === this.winCondition) {
           this.winner = "player1";
@@ -148,28 +146,29 @@ class Game {
   }
 
   checkDiagonalLeft() {
-    for (let i = 0; i <= this.rows - this.winCondition; i++) {
-      for (let j = this.columns - 1; j + 1 - this.winCondition >= 0; j--) {
-        let counter = 0;
+    console.log("wip");
+    // for (let i = 0; i <= this.rows - this.winCondition; i++) {
+    //   for (let j = this.columns - 1; j + 1 - this.winCondition >= 0; j--) {
+    //     let counter = 0;
 
-        counter +=
-          this.boardMatrix[i][j] +
-          this.boardMatrix[i + 1][j - 1] +
-          this.boardMatrix[i + 2][j - 2] +
-          this.boardMatrix[i + 3][j - 3];
+    //     counter +=
+    //       this.boardMatrix[i][j] +
+    //       this.boardMatrix[i + 1][j - 1] +
+    //       this.boardMatrix[i + 2][j - 2] +
+    //       this.boardMatrix[i + 3][j - 3];
 
-        if (counter === this.winCondition) {
-          this.winner = "player1";
-          this.gameOver = true;
-          return;
-        }
-        if (counter === -1 * this.winCondition) {
-          this.winner = "player2";
-          this.gameOver = true;
-          return;
-        }
-      }
-    }
+    //     if (counter === this.winCondition) {
+    //       this.winner = "player1";
+    //       this.gameOver = true;
+    //       return;
+    //     }
+    //     if (counter === -1 * this.winCondition) {
+    //       this.winner = "player2";
+    //       this.gameOver = true;
+    //       return;
+    //     }
+    //   }
+    // }
   }
 
   checkDraw(filled, total) {

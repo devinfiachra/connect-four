@@ -60,7 +60,7 @@ const isColumnFull = (column) => {
 };
 
 function startClassicGame() {
-  let game = new Game(6, 7);
+  let game = new Game(8, 8, 6);
   let slots = Array.from(document.getElementsByClassName("slot"));
 
   slots.forEach((slot) => {
@@ -107,6 +107,20 @@ function startClassicGame() {
               });
 
             game.score[game.winner] += 1;
+            game.score.total = `${game.score.player1} : ${game.score.player2}`;
+
+            let endgameText = document.getElementById("end-game-text");
+            let endgameScore = document.getElementById("end-game-score");
+
+            endgameText.innerText =
+              game.winner === "player1"
+                ? "PLAYER 1 WINS"
+                : game.winner === "player2"
+                ? "PLAYER 2 WINS"
+                : "STALEMATE";
+
+            endgameScore.innerText = `${game.score.total}`;
+
             endGameScreen.style.visibility = "visible";
 
             // THE REMATCH FUNCTION
