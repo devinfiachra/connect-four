@@ -1,12 +1,14 @@
 class Game {
-  constructor(rows, columns) {
+  constructor(rows, columns, winCondition) {
     this.rows = rows || 6;
     this.columns = columns || 7;
     (this.boardMatrix = this.createBoard()),
-      (this.winCondition = 4),
+      (this.winCondition = winCondition || 4),
       (this.currentPlayer = "player1"),
-      (this.score = [0, 0]);
-    (this.playerColor = { player1: "magenta", player2: "blue" }),
+      (this.winner = ""),
+      (this.gameOver = false);
+    (this.score = { player1: 0, player2: 0, draw: 0 }),
+      (this.playerColor = { player1: "magenta", player2: "blue" }),
       (this.theme = "");
     this.powerUpMode = false;
     this.createBoardUI();
@@ -76,11 +78,14 @@ class Game {
         }
 
         if (counter === this.winCondition) {
-          return alert("player1 vertical win!");
+          this.winner = "player1";
+          this.gameOver = true;
+          return;
         }
 
         if (counter === -1 * this.winCondition) {
-          return alert("player2 vertical win!");
+          this.winner = "player2";
+          this.gameOver = true;
         }
       }
     }
@@ -98,11 +103,13 @@ class Game {
         }
 
         if (counter === this.winCondition) {
-          return alert("player1 horizontal win!");
+          this.winner = "player1";
+          this.gameOver = true;
         }
 
         if (counter === -1 * this.winCondition) {
-          return alert("player2 horizontal win!");
+          this.winner = "player2";
+          this.gameOver = true;
         }
       }
     }
@@ -121,11 +128,15 @@ class Game {
           this.boardMatrix[i + 3][j + 3];
 
         if (counter === this.winCondition) {
-          return alert("player1 diagonal win right!");
+          this.winner = "player1";
+          this.gameOver = true;
+          return;
         }
 
         if (counter === -1 * this.winCondition) {
-          return alert("player2 diagonal win right!");
+          this.winner = "player2";
+          this.gameOver = true;
+          return;
         }
       }
     }
@@ -143,10 +154,14 @@ class Game {
           this.boardMatrix[i + 3][j - 3];
 
         if (counter === this.winCondition) {
-          return alert("player1 diagonal win left!");
+          this.winner = "player1";
+          this.gameOver = true;
+          return;
         }
         if (counter === -1 * this.winCondition) {
-          return alert("player2 diagonal win left!");
+          this.winner = "player2";
+          this.gameOver = true;
+          return;
         }
       }
     }
@@ -154,7 +169,9 @@ class Game {
 
   checkDraw(filled, total) {
     if (filled == total) {
-      return alert("DRAW GAME");
+      this.winner = "draw";
+      this.gameOver = true;
+      return;
     }
   }
 

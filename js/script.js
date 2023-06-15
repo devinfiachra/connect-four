@@ -94,16 +94,28 @@ function startClassicGame() {
           game.boardMatrix[i][currentColumn] =
             game.currentPlayer === "player1" ? 1 : -1;
 
-          //check for winning condition
+          //check for winning condition or Draw Game
+
           game.checkForWinner();
 
-          // check for Draw
           let occupiedSlots = Array.from(
             document.querySelectorAll(`[filled="true"]`)
           );
 
           game.checkDraw(occupiedSlots.length, slots.length);
-          //END GAME
+
+          if (game.gameOver === true) {
+            slots
+              .filter((slot) => !slot.hasAttribute("filledBy"))
+              .map((slot) => {
+                return slot.setAttribute("filledBy", "gameOver");
+              });
+
+            game.score[game.winner] += 1;
+            endGameScreen.style.visibility = "visible";
+
+            // add functionality to start game again and display scores
+          }
 
           // switch players
           game.togglePlayer();

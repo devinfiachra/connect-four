@@ -165,15 +165,16 @@ body {
 
 /* END GAME SCREEN */
 #end-game-screen {
-  background-color: springgreen;
-  height: 100vh;
+  background-color: magenta;
+  opacity: 0.9;
+  height: 40vh;
   width: 100vw;
   overflow: hidden;
   margin: 0;
   padding: 0;
   position: absolute;
   visibility: hidden;
-  z-index: 200;
+  z-index: 850;
 }
 
 /* PIECES */
