@@ -72,14 +72,12 @@ const activePlayer = (playerColor) => {
 let gameStyle = "";
 
 function startGame() {
-  // FOR DEMO
-
   let game = new Game();
 
-  // menuMusic();
-  game.fetchSoundFiles().then(() => {
-    game.playRandomSong();
-  });
+  menuMusic();
+  // game.fetchSoundFiles().then(() => {
+  //   game.playRandomSong();
+  // });
 
   let slots = Array.from(document.getElementsByClassName("slot"));
 
