@@ -85,10 +85,10 @@ function startGame() {
   // alert("Devin, check the console!! DELETE LINE 85 AFTER FIRST RUN");
   // console.log("INITIAL GAME STATE: ", game);
 
-  // menuMusic();
-  game.fetchSoundFiles().then(() => {
-    game.playRandomSong();
-  });
+  menuMusic();
+  // game.fetchSoundFiles().then(() => {
+  //   game.playRandomSong();
+  // });
 
   let slots = Array.from(document.getElementsByClassName("slot"));
 
