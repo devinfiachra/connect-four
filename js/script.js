@@ -42,6 +42,12 @@ function winner() {
   tune.play();
 }
 
+function draw() {
+  const jingle = "styles/audio/game/draw.wav";
+  const tune = new Audio(jingle);
+  tune.play();
+}
+
 function menuMusic() {
   const aphex = "styles/audio/soundtrack/music/alberto.mp3";
   const tune = new Audio(aphex);
@@ -117,6 +123,10 @@ function startGame() {
           );
 
           game.checkDraw(occupiedSlots.length, slots.length);
+
+          if (game.winner === "draw") {
+            draw();
+          }
 
           if (game.gameOver === true) {
             slots
