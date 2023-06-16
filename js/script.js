@@ -84,10 +84,10 @@ function startGame() {
   //DRAW GAME
   // let game = new Game(6, 7, 8);
 
-  // menuMusic();
-  game.fetchSoundFiles().then(() => {
-    game.playRandomSong();
-  });
+  menuMusic();
+  // game.fetchSoundFiles().then(() => {
+  //   game.playRandomSong();
+  // });
 
   let slots = Array.from(document.getElementsByClassName("slot"));
 
