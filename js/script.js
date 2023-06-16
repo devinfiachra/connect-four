@@ -225,6 +225,23 @@ optionsMenu.addEventListener("click", (e) => {
 const customStart = document.getElementById("custom-menu-start");
 const backButton = document.getElementById("custom-back-button");
 
+const r = document.querySelector(":root");
+const theme1 = document.getElementById("springgreen");
+const theme2 = document.getElementById("magenta");
+const theme3 = document.getElementById("blue");
+
+theme1.addEventListener("click", () => {
+  r.style.setProperty("--primary", "springgreen");
+});
+
+theme2.addEventListener("click", () => {
+  r.style.setProperty("--primary", "magenta");
+});
+
+theme3.addEventListener("click", () => {
+  r.style.setProperty("--primary", "blue");
+});
+
 customStart.addEventListener("click", (e) => {
   customGameScreen.style.visibility = "hidden";
   select();

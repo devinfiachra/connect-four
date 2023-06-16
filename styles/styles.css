@@ -146,6 +146,32 @@ body {
   font-family: "retro", Tahoma, Verdana, sans-serif;
 }
 
+.themes {
+  width: 100%;
+  height: 30%;
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.theme {
+  cursor: pointer;
+  height: 100%;
+  width: 25%;
+  border: 2px solid white;
+}
+
+#springgreen {
+  background-color: springgreen;
+}
+
+#magenta {
+  background-color: magenta;
+}
+
+#blue {
+  background-color: blue;
+}
+
 #custom-menu-buttons {
   margin: 0;
   padding-top: 1%;
