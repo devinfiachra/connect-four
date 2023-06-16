@@ -155,11 +155,9 @@ function startGame() {
 
               return (endGameScreen.style.visibility = "hidden");
             });
-
-            // add functionality to start game again and display scores
           }
 
-          // switch players
+          // switch players if game continues
           game.togglePlayer();
           activePlayer(game.playerColor[game.currentPlayer]);
 

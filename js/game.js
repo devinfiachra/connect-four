@@ -101,7 +101,7 @@ class Game {
   }
 
   checkVerticalWin() {
-    for (let i = 0; i < this.columns - 1; i++) {
+    for (let i = 0; i <= this.columns - 1; i++) {
       let counter = 0;
 
       for (let k = 0; k < this.rows; k++) {
