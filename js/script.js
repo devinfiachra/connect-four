@@ -82,13 +82,13 @@ function startGame() {
   //DRAW GAME
   // let game = new Game(6, 7, 8);
 
-  alert("Devin, check the console!!");
-  console.log("INITIAL GAME STATE: ", game);
+  // alert("Devin, check the console!! DELETE LINE 85 AFTER FIRST RUN");
+  // console.log("INITIAL GAME STATE: ", game);
 
-  // menuMusic();
-  game.fetchSoundFiles().then(() => {
-    game.playRandomSong();
-  });
+  menuMusic();
+  // game.fetchSoundFiles().then(() => {
+  //   game.playRandomSong();
+  // });
 
   let slots = Array.from(document.getElementsByClassName("slot"));
 
