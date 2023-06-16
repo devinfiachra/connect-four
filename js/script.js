@@ -85,10 +85,10 @@ function startGame() {
   // alert("Devin, check the console!! DELETE LINE 85 AFTER FIRST RUN");
   // console.log("INITIAL GAME STATE: ", game);
 
-  menuMusic();
-  // game.fetchSoundFiles().then(() => {
-  //   game.playRandomSong();
-  // });
+  // menuMusic();
+  game.fetchSoundFiles().then(() => {
+    game.playRandomSong();
+  });
 
   let slots = Array.from(document.getElementsByClassName("slot"));
 
@@ -114,6 +114,7 @@ function startGame() {
         }
 
         if (openSlot.getAttribute("filledBy") === null) {
+          coinIn(game.currentPlayer);
           openSlot.setAttribute("filledBy", game.currentPlayer);
           openSlot.setAttribute("filled", "true");
           openSlot.style.backgroundColor = game.playerColor[game.currentPlayer];
