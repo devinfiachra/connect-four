@@ -74,11 +74,20 @@ const activePlayer = (playerColor) => {
 let gameStyle = "";
 
 function startGame() {
-  let game = new Game();
-  menuMusic();
-  // game.fetchSoundFiles().then(() => {
-  //   game.playRandomSong();
-  // });
+  // FOR DEMO
+
+  // let game = new Game();
+  // let game = new Game(9, 9, 5);
+  // let game = new Game(14, 14, 7);
+  // let game = new Game(19, 19, 8);
+
+  //DRAW GAME
+  // let game = new Game(6, 7, 8);
+
+  // menuMusic();
+  game.fetchSoundFiles().then(() => {
+    game.playRandomSong();
+  });
 
   let slots = Array.from(document.getElementsByClassName("slot"));
 

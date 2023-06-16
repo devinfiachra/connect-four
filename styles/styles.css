@@ -9,13 +9,18 @@
 }
 /* 1rem = 16px */
 
+:root {
+  --primary: springgreen;
+  --secondary: black;
+}
+
 html {
   font-size: 3.2vw;
   font-family: "retro", Tahoma, Verdana, sans-serif;
 }
 
 body {
-  background-color: black;
+  background-color: var(--secondary);
   color: white;
   overflow: hidden;
   margin: 0;
@@ -29,7 +34,7 @@ body {
   width: 100vw;
   overflow: hidden;
   position: absolute;
-  background-color: black;
+  background-color: var(--secondary);
   color: white;
   display: flex;
   flex-direction: column;
@@ -56,7 +61,7 @@ body {
 }
 
 .start-button {
-  border: 2px solid springgreen;
+  border: 2px solid var(--primary);
   width: 40%;
   display: flex;
   flex-direction: column;
@@ -69,7 +74,7 @@ body {
 /* CUSTOM MENU SCREEN */
 
 #custom-game-menu-screen {
-  background-color: black;
+  background-color: var(--secondary);
   height: 100vh;
   width: 100vw;
   display: flex;
@@ -85,7 +90,7 @@ body {
 }
 
 #custom-menu {
-  border: 2px solid springgreen;
+  border: 2px solid var(--primary);
   margin: 0;
   width: 85%;
   height: 80%;
@@ -153,7 +158,7 @@ body {
 
 .custom-menu-button {
   margin: 0;
-  border: 4px solid springgreen;
+  border: 4px solid var(--primary);
   height: 100%;
   width: 45%;
   display: flex;
@@ -165,7 +170,7 @@ body {
 
 /* GAME SCREEN */
 #game-screen {
-  background-color: black;
+  background-color: var(--secondary);
   height: 100vh;
   width: 100vw;
   overflow: hidden;
@@ -231,7 +236,7 @@ body {
 
 #board {
   margin: 0;
-  border: 4px solid springgreen;
+  border: 4px solid var(--primary);
   width: 55%;
   height: 80%;
   display: flex;
@@ -239,7 +244,7 @@ body {
 }
 
 .row {
-  background-color: black;
+  background-color: var(--secondary);
   margin: 0;
   height: 100%;
   width: 100%;
@@ -247,7 +252,7 @@ body {
 }
 
 .slot {
-  border: 5px solid springgreen;
+  border: 5px solid var(--primary);
   margin: 1%;
   border-radius: 50%;
   width: 100%;
@@ -260,7 +265,7 @@ body {
 
 /* END GAME SCREEN */
 #end-game-screen {
-  border: 5px solid springgreen;
+  border: 5px solid var(--primary);
   opacity: 0.95;
   height: 50vh;
   width: 75vw;
@@ -297,8 +302,8 @@ body {
 .end-game-button {
   opacity: 1;
   font-size: 2.5vw;
-  background-color: black;
-  border: 4px solid springgreen;
+  background-color: var(--secondary);
+  border: 4px solid var(--primary);
   margin: 0;
   padding-top: 1%;
   height: 80%;
@@ -311,11 +316,3 @@ body {
 }
 
 /* PIECES */
-
-.player1 {
-  background-color: magenta;
-}
-
-.player2 {
-  background-color: springgreen;
-}
