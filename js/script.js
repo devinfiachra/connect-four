@@ -36,8 +36,14 @@ function resetPieces() {
   reset.play();
 }
 
+function winner() {
+  const jingle = "styles/audio/game/win.wav";
+  const tune = new Audio(jingle);
+  tune.play();
+}
+
 function menuMusic() {
-  const aphex = "styles/audio/soundtrack/menu/alberto.mp3";
+  const aphex = "styles/audio/soundtrack/music/alberto.mp3";
   const tune = new Audio(aphex);
   tune.play();
 }
@@ -63,10 +69,10 @@ let gameStyle = "";
 
 function startGame() {
   let game = new Game();
-
-  game.fetchSoundFiles().then(() => {
-    game.playRandomSong();
-  });
+  menuMusic();
+  // game.fetchSoundFiles().then(() => {
+  //   game.playRandomSong();
+  // });
 
   let slots = Array.from(document.getElementsByClassName("slot"));
 
@@ -101,6 +107,10 @@ function startGame() {
           //check for winning condition or Draw Game
 
           game.checkForWinner();
+
+          if (game.winner) {
+            winner();
+          }
 
           let occupiedSlots = Array.from(
             document.querySelectorAll(`[filled="true"]`)
