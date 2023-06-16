@@ -172,6 +172,18 @@ body {
   background-color: blue;
 }
 
+#red {
+  background-color: red;
+}
+
+#white {
+  background-color: grey;
+}
+
+#black {
+  background-color: black;
+}
+
 #custom-menu-buttons {
   margin: 0;
   padding-top: 1%;

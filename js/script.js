@@ -54,8 +54,6 @@ function menuMusic() {
   tune.play();
 }
 
-// TO DO: add a class to elements which take a color, and create a querySelectorAll function to map over them and apply a class primary, secondary so that a user can change the style of the board dynamically
-
 // SETUP -> GAME START
 
 const boardUI = document.getElementById("board");
@@ -84,10 +82,13 @@ function startGame() {
   //DRAW GAME
   // let game = new Game(6, 7, 8);
 
-  menuMusic();
-  // game.fetchSoundFiles().then(() => {
-  //   game.playRandomSong();
-  // });
+  alert("Devin, check the console!!");
+  console.log("INITIAL GAME STATE: ", game);
+
+  // menuMusic();
+  game.fetchSoundFiles().then(() => {
+    game.playRandomSong();
+  });
 
   let slots = Array.from(document.getElementsByClassName("slot"));
 
@@ -96,10 +97,12 @@ function startGame() {
   slots.forEach((slot) => {
     slot.addEventListener("click", (e) => {
       // where the game piece should go
+
       let currentRow = e.target.getAttribute("row");
       let currentColumn = e.target.getAttribute("column");
 
       //loop from the bottom to the top of the rows (Board Height)
+
       for (let i = game.rows - 1; i >= 0; i--) {
         let openSlot = document.querySelector(
           `[column="${currentColumn}"][row="${i}"]`
@@ -111,7 +114,6 @@ function startGame() {
         }
 
         if (openSlot.getAttribute("filledBy") === null) {
-          coinIn(game.currentPlayer);
           openSlot.setAttribute("filledBy", game.currentPlayer);
           openSlot.setAttribute("filled", "true");
           openSlot.style.backgroundColor = game.playerColor[game.currentPlayer];
@@ -120,6 +122,8 @@ function startGame() {
             game.currentPlayer === "player1" ? 1 : -1;
 
           //check for winning condition or Draw Game
+
+          console.log("Logic Board After Move: ", game.boardMatrix);
 
           game.checkForWinner();
 
@@ -235,6 +239,10 @@ const theme1 = document.getElementById("springgreen");
 const theme2 = document.getElementById("magenta");
 const theme3 = document.getElementById("blue");
 
+const theme5 = document.getElementById("red");
+const theme4 = document.getElementById("white");
+const theme6 = document.getElementById("black");
+
 theme1.addEventListener("click", () => {
   r.style.setProperty("--primary", "springgreen");
 });
@@ -247,11 +255,23 @@ theme3.addEventListener("click", () => {
   r.style.setProperty("--primary", "blue");
 });
 
+theme4.addEventListener("click", () => {
+  r.style.setProperty("--secondary", "grey");
+});
+
+theme5.addEventListener("click", () => {
+  r.style.setProperty("--secondary", "red");
+});
+
+theme6.addEventListener("click", () => {
+  r.style.setProperty("--secondary", "black");
+});
+
 customStart.addEventListener("click", (e) => {
   customGameScreen.style.visibility = "hidden";
   select();
   // ADD RULES TO TAKE CUSTOM PARAMETERS FROM CUSTOM FORM AND CREATE CUSTOM GAME FROM THE USER INPUT
-  startCustomGame(9, 9, 5);
+  startGame();
 
   gameScreen.style.visibility = "visible";
 });
