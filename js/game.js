@@ -15,6 +15,33 @@ class Game {
       }),
       (this.theme = "");
     this.createBoardUI();
+    this.audioFiles = [];
+    this.currentSongIndex = 0;
+    this.audioElement = new Audio();
+  }
+
+  async fetchSoundFiles() {
+    try {
+      let response = await fetch("styles/audio/soundtrack/music/");
+      let data = await response.text();
+      let parser = new DOMParser();
+      let html = parser.parseFromString(data, "text/html");
+      let links = html.querySelectorAll("a");
+
+      this.audioFiles = Array.from(links)
+        .map((link) => link.href)
+        .filter((href) => href.endsWith(".mp3"));
+
+      this.audioElement.src = this.audioFiles[0];
+    } catch (error) {
+      console.error("Error fetching sound files:", error);
+    }
+  }
+
+  playRandomSong() {
+    const randomIndex = Math.floor(Math.random() * this.audioFiles.length);
+    this.audioElement.src = this.audioFiles[randomIndex];
+    this.audioElement.play();
   }
 
   createBoard() {

@@ -4,33 +4,7 @@ const customGameScreen = document.getElementById("custom-game-menu-screen");
 const gameScreen = document.getElementById("game-screen");
 const endGameScreen = document.getElementById("end-game-screen");
 
-//MUSIC
-
-async function fetchSoundFiles() {
-  let response = await fetch("styles/audio/soundtrack/monkeys");
-  let data = await response.text();
-  let parser = new DOMParser();
-  let html = parser.parseFromString(data, "text/html");
-  let links = html.querySelectorAll("a");
-
-  let soundFiles = Array.from(links)
-    .map((link) => link.href)
-    .filter((href) => href.endsWith(".mp3") || href.endsWith(".m4a")); // Adjust the file extension if needed
-
-  return soundFiles;
-}
-
-function soundtrack() {
-  fetchSoundFiles().then((soundFiles) => {
-    // Randomly select a sound file
-    var randomIndex = Math.floor(Math.random() * soundFiles.length);
-    var soundPath = soundFiles[randomIndex];
-
-    // Play the sound
-    var audio = new Audio(soundPath);
-    audio.play();
-  });
-}
+//MUSIC - SOUNDS
 
 function coinIn(currentPlayer) {
   const coinDrop = `styles/audio/game/${currentPlayer}.wav`;
@@ -62,6 +36,12 @@ function resetPieces() {
   reset.play();
 }
 
+function menuMusic() {
+  const aphex = "styles/audio/soundtrack/menu/alberto.mp3";
+  const tune = new Audio(aphex);
+  tune.play();
+}
+
 // TO DO: add a class to elements which take a color, and create a querySelectorAll function to map over them and apply a class primary, secondary so that a user can change the style of the board dynamically
 
 // SETUP -> GAME START
@@ -83,7 +63,13 @@ let gameStyle = "";
 
 function startGame() {
   let game = new Game();
+
+  game.fetchSoundFiles().then(() => {
+    game.playRandomSong();
+  });
+
   let slots = Array.from(document.getElementsByClassName("slot"));
+
   activePlayer(game.playerColor[game.currentPlayer]);
 
   slots.forEach((slot) => {
@@ -198,7 +184,6 @@ startButton.addEventListener("click", (e) => {
   startScreen.style.visibility = "hidden";
   gameScreen.style.visibility = "visible";
   select();
-  soundtrack();
   startGame();
 });
 
@@ -217,7 +202,7 @@ customStart.addEventListener("click", (e) => {
   customGameScreen.style.visibility = "hidden";
   select();
   // ADD RULES TO TAKE CUSTOM PARAMETERS FROM CUSTOM FORM AND CREATE CUSTOM GAME FROM THE USER INPUT
-  startCustomGame();
+  startCustomGame(9, 9, 5);
 
   gameScreen.style.visibility = "visible";
 });
