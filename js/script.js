@@ -74,11 +74,17 @@ const isColumnFull = (column) => {
   return topSlot.hasAttribute("filledBy");
 };
 
+const activePlayer = (playerColor) => {
+  let active = document.getElementById("active-player-coin");
+  active.style.backgroundColor = playerColor;
+};
+
 let gameStyle = "";
 
 function startGame() {
   let game = new Game();
   let slots = Array.from(document.getElementsByClassName("slot"));
+  activePlayer(game.playerColor[game.currentPlayer]);
 
   slots.forEach((slot) => {
     slot.addEventListener("click", (e) => {
@@ -155,12 +161,10 @@ function startGame() {
               slots
                 .filter((slot) => slot.hasAttribute("filledBy"))
                 .map((slot) => {
-                  setTimeout(() => {
-                    slot.removeAttribute("filledBy");
-                    slot.removeAttribute("filled");
-                    slot.style.backgroundColor = "black";
-                    resetPieces();
-                  }, 1000);
+                  slot.removeAttribute("filledBy");
+                  slot.removeAttribute("filled");
+                  slot.style.backgroundColor = "black";
+                  resetPieces();
                 });
 
               return (endGameScreen.style.visibility = "hidden");
@@ -171,6 +175,7 @@ function startGame() {
 
           // switch players
           game.togglePlayer();
+          activePlayer(game.playerColor[game.currentPlayer]);
 
           return;
         }

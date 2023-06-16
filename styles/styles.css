@@ -179,11 +179,61 @@ body {
   z-index: 800;
 }
 
+#player-coins {
+  position: absolute;
+  height: 20vh;
+  width: 20vw;
+  left: 0;
+  font-size: 1vw;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+}
+
+#active-player {
+  height: 20%;
+  width: 70%;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+.coinholder {
+  display: flex;
+  width: 70%;
+  height: 40%;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+.playing {
+  text-decoration: underline;
+  background-color: yellow;
+}
+
+.player1-coin {
+  border: 2px solid white;
+  height: 20px;
+  width: 20px;
+  border-radius: 50%;
+  background-color: magenta;
+}
+
+.player2-coin {
+  border: 2px solid white;
+  height: 20px;
+  width: 20px;
+  border-radius: 50%;
+  background-color: blue;
+}
+
 #board {
   margin: 0;
   border: 4px solid springgreen;
-  width: 50%;
-  height: 75%;
+  width: 55%;
+  height: 80%;
   display: flex;
   flex-direction: column;
 }
