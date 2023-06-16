@@ -76,7 +76,7 @@ let gameStyle = "";
 function startGame() {
   // FOR DEMO
 
-  // let game = new Game();
+  let game = new Game();
   // let game = new Game(9, 9, 5);
   // let game = new Game(14, 14, 7);
   // let game = new Game(19, 19, 8);
