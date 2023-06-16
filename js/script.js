@@ -82,13 +82,12 @@ function startGame() {
   //DRAW GAME
   // let game = new Game(6, 7, 8);
 
-  // alert("Devin, check the console!! DELETE LINE 85 AFTER FIRST RUN");
-  // console.log("INITIAL GAME STATE: ", game);
+  console.log("INITIAL GAME STATE: ", game);
 
-  menuMusic();
-  // game.fetchSoundFiles().then(() => {
-  //   game.playRandomSong();
-  // });
+  // menuMusic();
+  game.fetchSoundFiles().then(() => {
+    game.playRandomSong();
+  });
 
   let slots = Array.from(document.getElementsByClassName("slot"));
 
@@ -181,14 +180,17 @@ function startGame() {
 
             rematch.addEventListener("click", (e) => {
               select();
+
+              console.log("GAME ON WIN: ", game.boardMatrix);
               game.newGame();
+              console.log("GAME AFTER BAORD RESET: ", game.boardMatrix);
 
               slots
                 .filter((slot) => slot.hasAttribute("filledBy"))
                 .map((slot) => {
                   slot.removeAttribute("filledBy");
                   slot.removeAttribute("filled");
-                  slot.style.backgroundColor = "black";
+                  slot.style.backgroundColor = `var(--secondary)`;
                   resetPieces();
                 });
 
