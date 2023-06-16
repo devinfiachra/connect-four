@@ -168,6 +168,11 @@ function startGame() {
             // THE REMATCH FUNCTION
 
             const rematch = document.getElementById("rematch");
+            const backToMain = document.getElementById("custom-game");
+
+            backToMain.addEventListener("click", () => {
+              location.reload();
+            });
 
             rematch.addEventListener("click", (e) => {
               select();
