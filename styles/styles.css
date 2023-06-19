@@ -7,7 +7,6 @@
   font-weight: normal;
   font-style: normal;
 }
-/* 1rem = 16px */
 
 :root {
   --primary: springgreen;
@@ -75,300 +74,322 @@ body {
   animation: fadeIn 1.5s linear infinite;
 }
 
-/* CUSTOM MENU SCREEN */
-
-#custom-game-menu-screen {
-  background-color: var(--secondary);
-  height: 100vh;
-  width: 100vw;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  overflow: hidden;
-  margin: 0;
-  padding: 0;
-  position: absolute;
-  visibility: visible;
-  z-index: 800;
-}
-
-#custom-menu {
-  border: 2px solid var(--primary);
-  margin: 0;
-  width: 85%;
-  height: 80%;
-  font-size: 2vw;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-#custom-head {
-  font-size: 5vw;
-  width: 100%;
-  height: 15%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.custom-container {
-  height: 15%;
-  width: 60%;
-  display: flex;
-  justify-content: space-between;
-}
-
-.custom-text {
-  width: 60%;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  justify-content: flex-end;
-}
-
-.custom-input {
-  height: 100%;
-  width: 40%;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  justify-content: flex-end;
-}
-
-.custom-input > input {
-  width: 100%;
-  margin: 0;
-  box-shadow: none;
-  outline: none;
-  height: 40%;
-  background: none;
-  border: none;
-  color: var(--text);
-  font-size: 2vw;
-  font-family: "retro", Tahoma, Verdana, sans-serif;
-}
-
-.themes {
-  width: 100%;
-  height: 30%;
-  display: flex;
-  justify-content: space-evenly;
-}
-
-.theme {
-  cursor: pointer;
-  height: 100%;
-  width: 25%;
-  border: 2px solid var(--text);
-}
-
-#springgreen {
-  background-color: springgreen;
-}
-
-#magenta {
-  background-color: magenta;
-}
-
-#blue {
-  background-color: blue;
-}
-
-#red {
-  background-color: red;
-}
-
-#white {
-  background-color: grey;
-}
-
-#black {
-  background-color: black;
-}
-
-#custom-menu-buttons {
-  margin: 0;
-  padding-top: 1%;
-  height: 10%;
-  width: 80%;
-  display: flex;
-  align-items: center;
-  justify-content: space-evenly;
-}
-
-.custom-menu-button {
-  margin: 0;
-  border: 4px solid var(--primary);
-  height: 100%;
-  width: 45%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-}
-
-/* GAME SCREEN */
-#game-screen {
-  background-color: var(--secondary);
-  height: 100vh;
-  width: 100vw;
-  overflow: hidden;
-  margin: 0;
-  padding: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  position: absolute;
+#vertical-mobile {
   visibility: hidden;
-  z-index: 800;
 }
 
-#player-coins {
-  position: absolute;
-  height: 20vh;
-  width: 20vw;
-  left: 0;
-  font-size: 1vw;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: space-between;
-}
+@media all and (orientation: landscape) {
+  /* 1rem = 16px */
 
-#active-player {
-  height: 20%;
-  width: 70%;
-  display: flex;
-  align-items: center;
-  justify-content: space-evenly;
-}
+  /* CUSTOM MENU SCREEN */
 
-.coinholder {
-  display: flex;
-  width: 70%;
-  height: 40%;
-  display: flex;
-  align-items: center;
-  justify-content: space-evenly;
-}
-
-.playing {
-  text-decoration: underline;
-  background-color: yellow;
-}
-
-.player1-coin {
-  border: 2px solid white;
-  height: 20px;
-  width: 20px;
-  border-radius: 50%;
-  background-color: var(--player1);
-}
-
-.player2-coin {
-  border: 2px solid white;
-  height: 20px;
-  width: 20px;
-  border-radius: 50%;
-  background-color: var(--player2);
-}
-
-#board {
-  margin: 0;
-  border: 4px solid var(--primary);
-  width: 55%;
-  height: 80%;
-  display: flex;
-  flex-direction: column;
-}
-
-.row {
-  background-color: var(--secondary);
-  margin: 0;
-  height: 100%;
-  width: 100%;
-  display: flex;
-}
-
-.slot {
-  border: 5px solid var(--primary);
-  margin: 1%;
-  border-radius: 50%;
-  width: 100%;
-}
-
-.slot:hover {
-  cursor: pointer;
-  opacity: 0.4;
-}
-
-/* END GAME SCREEN */
-#end-game-screen {
-  border: 5px solid var(--primary);
-  opacity: 0.95;
-  height: 50vh;
-  width: 75vw;
-  overflow: hidden;
-  margin: 0;
-  padding: 0;
-  position: absolute;
-  visibility: hidden;
-  z-index: 850;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-}
-
-.end-game-text-container {
-  font-size: 4vw;
-  width: 100%;
-  height: 55%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: space-evenly;
-}
-
-.end-game-buttons-container {
-  height: 25%;
-  width: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: space-evenly;
-}
-
-.end-game-button {
-  opacity: 1;
-  font-size: 2.5vw;
-  background-color: var(--secondary);
-  border: 4px solid var(--primary);
-  margin: 0;
-  padding-top: 1%;
-  height: 80%;
-  width: 35%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-}
-
-/* ANIMATIONS */
-
-@keyframes fadeIn {
-  0% {
-    opacity: 1;
+  #custom-game-menu-screen {
+    background-color: var(--secondary);
+    height: 99vh;
+    width: 99vw;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 0;
+    padding: 0;
+    position: absolute;
+    visibility: visible;
+    z-index: 800;
   }
 
-  50% {
-    opacity: 0.5;
+  #custom-menu {
+    border: 2px solid var(--primary);
+    margin: 0;
+    width: 85%;
+    height: 80%;
+    font-size: 2vw;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
   }
 
-  100% {
+  #custom-head {
+    font-size: 5vw;
+    width: 80%;
+    height: 15%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .custom-container {
+    height: 15%;
+    width: 60%;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .custom-text {
+    width: 60%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-end;
+  }
+
+  .custom-input {
+    height: 100%;
+    width: 40%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-end;
+  }
+
+  .custom-input > input {
+    border: none;
+    width: 60%;
+    margin: 0;
+    box-shadow: none;
+    outline: none;
+    height: 40%;
+    background: none;
+    color: var(--text);
+    font-size: 2vw;
+    font-family: "retro", Tahoma, Verdana, sans-serif;
+  }
+
+  .themes {
+    width: 100%;
+    height: 30%;
+    display: flex;
+    justify-content: space-evenly;
+  }
+
+  .theme {
+    cursor: pointer;
+    height: 100%;
+    width: 25%;
+    border: 2px solid var(--text);
+  }
+
+  #springgreen {
+    background-color: springgreen;
+  }
+
+  #magenta {
+    background-color: magenta;
+  }
+
+  #blue {
+    background-color: blue;
+  }
+
+  #red {
+    background-color: red;
+  }
+
+  #white {
+    background-color: grey;
+  }
+
+  #black {
+    background-color: black;
+  }
+
+  #custom-menu-buttons {
+    margin: 0;
+    padding-top: 1%;
+    height: 10%;
+    width: 80vw;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+  }
+
+  .custom-menu-button {
+    margin: 0;
+    border: 4px solid var(--primary);
+    height: 100%;
+    width: 45%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+  }
+
+  /* GAME SCREEN */
+  #game-screen {
+    background-color: var(--secondary);
+    height: 100vh;
+    width: 100vw;
+    overflow: hidden;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    visibility: hidden;
+    z-index: 800;
+  }
+
+  #player-coins {
+    position: absolute;
+    height: 20vh;
+    width: 20vw;
+    left: 0;
+    font-size: 1vw;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  #active-player {
+    height: 20%;
+    width: 70%;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+  }
+
+  .coinholder {
+    display: flex;
+    width: 70%;
+    height: 40%;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+  }
+
+  .playing {
+    text-decoration: underline;
+    background-color: yellow;
+  }
+
+  .player1-coin {
+    border: 2px solid white;
+    height: 20px;
+    width: 20px;
+    border-radius: 50%;
+    background-color: var(--player1);
+  }
+
+  .player2-coin {
+    border: 2px solid white;
+    height: 20px;
+    width: 20px;
+    border-radius: 50%;
+    background-color: var(--player2);
+  }
+
+  #board {
+    margin: 0;
+    border: 4px solid var(--primary);
+    width: 55%;
+    height: 80%;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .row {
+    background-color: var(--secondary);
+    margin: 0;
+    height: 100%;
+    width: 100%;
+    display: flex;
+  }
+
+  .slot {
+    border: 5px solid var(--primary);
+    margin: 1%;
+    border-radius: 50%;
+    width: 100%;
+  }
+
+  .slot:hover {
+    cursor: pointer;
+    opacity: 0.4;
+  }
+
+  /* END GAME SCREEN */
+  #end-game-screen {
+    border: 5px solid var(--primary);
+    opacity: 0.95;
+    height: 50vh;
+    width: 75vw;
+    overflow: hidden;
+    margin: 0;
+    padding: 0;
+    position: absolute;
+    visibility: hidden;
+    z-index: 850;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .end-game-text-container {
+    font-size: 4vw;
+    width: 100%;
+    height: 55%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+  }
+
+  .end-game-buttons-container {
+    height: 25%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+  }
+
+  .end-game-button {
     opacity: 1;
+    font-size: 2.5vw;
+    background-color: var(--secondary);
+    border: 4px solid var(--primary);
+    margin: 0;
+    padding-top: 1%;
+    height: 80%;
+    width: 35%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+  }
+
+  /* ANIMATIONS */
+
+  @keyframes fadeIn {
+    0% {
+      opacity: 1;
+    }
+
+    50% {
+      opacity: 0.5;
+    }
+
+    100% {
+      opacity: 1;
+    }
+  }
+}
+
+/* Mobile Screen */
+
+@media all and (orientation: portrait) {
+  #start-screen-buttons {
+    visibility: hidden;
+  }
+
+  #vertical-mobile {
+    text-align: center;
+    width: 100vw;
+    height: 30vh;
+    visibility: visible;
   }
 }

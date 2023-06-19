@@ -113,8 +113,6 @@ function startGame() {
 
           //check for winning condition or Draw Game
 
-          console.log("Logic Board After Move: ", game.boardMatrix);
-
           game.checkForWinner();
 
           if (game.winner) {
@@ -171,9 +169,7 @@ function startGame() {
             rematch.addEventListener("click", (e) => {
               select();
 
-              console.log("GAME ON WIN: ", game.boardMatrix);
               game.newGame();
-              console.log("GAME AFTER BAORD RESET: ", game.boardMatrix);
 
               slots
                 .filter((slot) => slot.hasAttribute("filledBy"))
@@ -188,7 +184,8 @@ function startGame() {
             });
           }
 
-          // switch players if game continues
+          // Switch players if the game continues
+
           game.togglePlayer();
           activePlayer(game.playerColor[game.currentPlayer]);
 
