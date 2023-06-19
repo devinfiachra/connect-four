@@ -1,5 +1,10 @@
 # connect-four
 
+
+https://devinfiachra.github.io/connect-four/
+
+
+
 Features to come// Backlog:
 - generate more of the html using javascript
 - implement custom board size mode 
