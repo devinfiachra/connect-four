@@ -392,7 +392,7 @@ body {
     background-color: red;
     display: flex;
     flex-direction: column;
-    justify-content: space-around;
+    justify-content: center;
     align-items: center;
   }
 
@@ -406,6 +406,8 @@ body {
   }
 
   #radiohead {
-    height: 35vh;
+    padding: 5%;
+    height: 20vh;
+    width: 30vw;
   }
 }
