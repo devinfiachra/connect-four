@@ -382,14 +382,26 @@ body {
 /* Mobile Screen */
 
 @media all and (orientation: portrait) {
-  #start-screen-buttons {
-    visibility: hidden;
+  #vertical-mobile {
+    position: absolute;
+    visibility: visible;
+    height: 100vh;
+    width: 100vw;
+    overflow: hidden;
+    z-index: 9001;
+    background-color: red;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
   }
 
-  #vertical-mobile {
-    text-align: center;
-    width: 100vw;
-    height: 30vh;
-    visibility: visible;
+  .mobile-title {
+    width: 80%;
+    height: 30%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 8vw;
   }
 }

@@ -54,6 +54,11 @@ function menuMusic() {
   tune.play();
 }
 
+function radiohead() {
+  const radiohead = "styles/audio/soundtrack/music/weirdfishes.mp3";
+  const tune = new Audio(radiohead);
+  tune.play();
+}
 // SETUP -> GAME START
 
 const boardUI = document.getElementById("board");
@@ -266,4 +271,10 @@ backButton.addEventListener("click", (e) => {
   startScreen.style.visibility = "visible";
   customGameScreen.style.visibility = "hidden";
   navBack();
+});
+
+// HIDDEN SCREEN
+
+document.getElementById("radiohead").addEventListener("click", () => {
+  radiohead();
 });
