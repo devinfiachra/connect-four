@@ -132,9 +132,9 @@ class Game {
       for (let k = 0; k <= this.columns - 1; k++) {
         if (this.boardMatrix[i][k] === 0) {
           counter = 0;
-        } else {
-          counter += this.boardMatrix[i][k];
         }
+
+        counter += this.boardMatrix[i][k];
 
         if (counter === this.winCondition) {
           this.winner = "player1";
@@ -144,6 +144,10 @@ class Game {
         if (counter === -1 * this.winCondition) {
           this.winner = "player2";
           this.gameOver = true;
+        }
+
+        if (this.boardMatrix[i][k] !== this.boardMatrix[i][k + 1]) {
+          counter = 0;
         }
       }
     }
