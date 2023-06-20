@@ -380,7 +380,7 @@ body {
 
 /* Mobile Screen */
 
-@media all and (orientation: portrait) {
+@media screen and (orientation: portrait) and (max-device-width: 480px) {
   #vertical-mobile {
     top: 0;
     position: absolute;
